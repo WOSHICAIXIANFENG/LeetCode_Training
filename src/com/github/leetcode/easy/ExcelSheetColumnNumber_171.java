@@ -1,11 +1,11 @@
-package com.github.leetcode;
+package com.github.leetcode.easy;
 
 /**
  * https://leetcode.com/problems/excel-sheet-column-number/
  * 
  * @author Samuel
  */
-public class ExcelSheetColumnNumber {
+public class ExcelSheetColumnNumber_171 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

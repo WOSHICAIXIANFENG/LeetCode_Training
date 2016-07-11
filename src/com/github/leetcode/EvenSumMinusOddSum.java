@@ -1,9 +1,8 @@
 package com.github.leetcode;
 
 /**
- * https://leetcode.com/problems/combination-sum-ii/
  * 
- * @author Samuel
+ * @author Samuel.Cai
  */
 public class EvenSumMinusOddSum{
 

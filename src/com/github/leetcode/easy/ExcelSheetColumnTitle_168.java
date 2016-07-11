@@ -1,12 +1,12 @@
-package com.github.leetcode;
+package com.github.leetcode.easy;
 /**
  * https://leetcode.com/problems/excel-sheet-column-title/
  * 
  * @author Samuel
  */
-class ExcelSheetColumnTitle {
+class ExcelSheetColumnTitle_168 {
 	public static void main(String[] args) {
-		ExcelSheetColumnTitle obj = new ExcelSheetColumnTitle();
+		ExcelSheetColumnTitle_168 obj = new ExcelSheetColumnTitle_168();
 		// for (int i = 1; i < 100; i ++) {
 		// 	System.out.println("ExcelSheetColumnTitle i = " + i + "  , result = " + obj.convertToTitle(i));
 		// }

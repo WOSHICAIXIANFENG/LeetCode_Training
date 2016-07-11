@@ -1,4 +1,4 @@
-package com.github.leetcode;
+package com.github.leetcode.medium;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -8,11 +8,11 @@ import java.util.List;
  * 
  * @author Samuel
  */
-public class CombinationSum_2_Solution {
+public class CombinationSum_2_40 {
 	 public static void main(String[] args) {
         int[]  a = new int[]{10, 1, 2, 7, 6, 1, 5, 1};
 
-        List<List<Integer>> results = new CombinationSum_2_Solution().combinationSum2(a, 8);
+        List<List<Integer>> results = new CombinationSum_2_40().combinationSum2(a, 8);
         System.out.println("CombinationSum_2_Solution  results222 = " + results);
     } 
       
