@@ -2,6 +2,8 @@ package com.samuel.test;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Instant class is used to work with machine readable time format, it stores date time in unix timestamp.
@@ -21,6 +23,13 @@ public class InstantExample {
 		// Duration example
 		Duration thirtyDay = Duration.ofDays(30);
 		System.out.println(thirtyDay);
+		
+		// We can't create generic array!!!
+		//List<Integer>[] intList = new List<Integer>[5];
+		
+		// Generic doesn't support sub-typing because it will cause issues in achieving type safety.
+		//List<Number> numbers = new ArrayList<Integer>();
+		
 	}
 
 }

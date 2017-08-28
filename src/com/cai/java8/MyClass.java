@@ -14,5 +14,8 @@ public class MyClass implements Interface1, Interface2 {
 	public void log(String str){
 		System.out.println("MyClass logging::"+str);
 		//Interface1.log("abc");
+		
+		// solve the diamond problem.  
+		Interface1.super.log(str);
 	}
 }
