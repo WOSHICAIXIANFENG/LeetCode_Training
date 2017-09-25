@@ -23,61 +23,35 @@ public class ValidPalindromeII_680 {
 		System.out.println("Samuel Test str6 = " + validPalindrome(str6));
 	}
 	
+	/**
+	 * Complexity Analysis:
+	 * Time Complexity: O(N) where N is the length of the string. Each of two checks of whether some substring is O(N)
+	 * Space Complexity: O(1) additional complexity. Only pointers were stored in memory. 
+	 * 
+	 * @param s
+	 * @return
+	 */
+	public static boolean validPalindrome(String s) {
+		for (int i = 0; i < s.length() / 2; i ++) {
+			if (s.charAt(i) != s.charAt(s.length() - 1 - i)) {
+				int j = s.length() - 1 - i;
+				return (isPalindromeRange(s, i + 1, j) || isPalindromeRange(s, i, j - 1));
+			} else {
+				// 
+				if (i == s.length() / 2 - 1) {
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
 	
-    //  * Time Complexity: O(N) where N is the length of the string. Each of two checks of whether some substring is O(N)
-	//  * Space Complexity: O(1) additional complexity. Only pointers were stored in memory. 
-    public static boolean validPalindrome(String s) {
-        for (int i = 0; i < s.length() / 2; i ++) {
-            if (s.charAt(i) != s.charAt(s.length() - 1 - i)) {
-                int j = s.length() - 1 - i;
-                return isPalindromeRange(s, i, j - 1) || isPalindromeRange(s, i + 1, j);
-            } else {
-                // 'ccacc', 'ccaacc'
-                if (i == s.length() / 2 - 1) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-    
-    public static boolean isPalindromeRange(String s, int i, int j) {
-        for (int k = i; k <= i + (j - i) / 2 ; j ++) {
-            if (s.charAt(k) != s.charAt(j - (k - i))) return false;
+	public static boolean isPalindromeRange(String s, int i, int j) {
+        for (int k = i; k <= i + (j - i) / 2; k++) {
+            if (s.charAt(k) != s.charAt(j - k + i)) return false;
         }
         return true;
     }
-    
-	
-//	/**
-//	 * Complexity Analysis:
-//	 * Time Complexity: O(N) where N is the length of the string. Each of two checks of whether some substring is O(N)
-//	 * Space Complexity: O(1) additional complexity. Only pointers were stored in memory. 
-//	 * 
-//	 * @param s
-//	 * @return
-//	 */
-//	public static boolean validPalindrome(String s) {
-//		for (int i = 0; i < s.length() / 2; i ++) {
-//			if (s.charAt(i) != s.charAt(s.length() - 1 - i)) {
-//				int j = s.length() - 1 - i;
-//				return (isPalindromeRange(s, i + 1, j) || isPalindromeRange(s, i, j - 1));
-//			} else {
-//				// 
-//				if (i == s.length() / 2 - 1) {
-//					return true;
-//				}
-//			}
-//		}
-//
-//		return false;
-//	}
-//	
-//	public static boolean isPalindromeRange(String s, int i, int j) {
-//        for (int k = i; k <= i + (j - i) / 2; k++) {
-//            if (s.charAt(k) != s.charAt(j - k + i)) return false;
-//        }
-//        return true;
-//    }
 
 }

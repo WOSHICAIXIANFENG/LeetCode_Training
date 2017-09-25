@@ -22,11 +22,14 @@ public class KthLargestEleInArray_215 {
 		System.out.println("Samuel Test findKthLargest = " + findKthLargest2(arry1, k));
 	}
 	
+	// Time Complexity is nO(log(n))
+	
 	// Java Priority Queue implementation provides O(log(n)) time for enqueing and dequeing method.
 	// PriorityQueue is not thread safe, so java provides PriorityBlockingQueue for multithreading environment.
 	public static int findKthLargest(int[] nums, int k) {
 		PriorityQueue<Integer> pq = new PriorityQueue<Integer>(k);
 		for (int i : nums) {
+			// O(log(n))
 			pq.offer(i);// vs add(). if the queue's capacity is fixed. when you try to add another new item into this queue, 
 			//it will throw uncheckedException if you use add(), if you use offer(), just return false.
 			
@@ -35,6 +38,7 @@ public class KthLargestEleInArray_215 {
 			}
 		}
 		
+		// peek is O(1)
 		return pq.peek();
     }
 	
