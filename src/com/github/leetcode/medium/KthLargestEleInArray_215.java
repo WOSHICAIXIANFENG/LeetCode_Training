@@ -1,5 +1,6 @@
 package com.github.leetcode.medium;
 
+import java.util.Arrays;
 import java.util.PriorityQueue;
 
 /**
@@ -19,27 +20,55 @@ public class KthLargestEleInArray_215 {
 	public static void main(String[] args) {
 		int[] arry1 = {7, 10, 4, 3, 20, 15};
 		int k = 4;
+		System.out.println("Samuel Test findKthLargest = " + findKthLargest(arry1, k));
+		
 		System.out.println("Samuel Test findKthLargest = " + findKthLargest2(arry1, k));
+		
+		System.out.println("Samuel Test findKthLargest = " + findKthLargest3(arry1, k));
+	}
+	
+	// O(nlog(n)) time complexity + O(1) memory
+	public static int findKthLargest3(int[] nums, int k) {
+		final int N = nums.length;
+		Arrays.sort(nums);
+		return nums[N - k];
 	}
 	
 	// Time Complexity is nO(log(n))
 	
-	// Java Priority Queue implementation provides O(log(n)) time for enqueing and dequeing method.
+//	// Java Priority Queue implementation provides O(log(n)) time for enqueing and dequeing method.
+//	// PriorityQueue is not thread safe, so java provides PriorityBlockingQueue for multithreading environment.
+//	public static int findKthLargest(int[] nums, int k) {
+//		// For PriorityQueue --- Poll() & Offer() --- time complexity is O(log(n))
+//		PriorityQueue<Integer> pq = new PriorityQueue<Integer>(k);
+//		for (int i : nums) {
+//			// O(log(n))
+//			pq.offer(i);// vs add(). if the queue's capacity is fixed. when you try to add another new item into this queue, 
+//			//it will throw uncheckedException if you use add(), if you use offer(), just return false.
+//			
+//			if (pq.size() > k) {
+//				pq.poll();// vs remove()
+//			}
+//		}
+//		
+//		// peek is O(1)
+//		return pq.peek();
+//    }
+	
 	// PriorityQueue is not thread safe, so java provides PriorityBlockingQueue for multithreading environment.
-	public static int findKthLargest(int[] nums, int k) {
-		PriorityQueue<Integer> pq = new PriorityQueue<Integer>(k);
-		for (int i : nums) {
-			// O(log(n))
-			pq.offer(i);// vs add(). if the queue's capacity is fixed. when you try to add another new item into this queue, 
-			//it will throw uncheckedException if you use add(), if you use offer(), just return false.
-			
-			if (pq.size() > k) {
-				pq.poll();// vs remove()
-			}
-		}
-		
-		// peek is O(1)
-		return pq.peek();
+	// O(N lg K) running time + O(K) memory
+    public static int findKthLargest(int[] nums, int k) {
+        PriorityQueue<Integer> pq = new PriorityQueue<>(k);
+        for (int n : nums) {
+            // for PriorityQueue ---- offer() & poll() --- time complexity is O(log(k)) --- k is the size of Queue
+            pq.offer(n);
+            
+            if (pq.size() > k) {
+                pq.poll();
+            }
+        }
+        // peek() is O(1)
+        return pq.peek();
     }
 	
 	
@@ -72,6 +101,8 @@ public class KthLargestEleInArray_215 {
 		A[i] = A[j];
 		A[j] = tmp;				
 	}
+	
+	
 }
 
 

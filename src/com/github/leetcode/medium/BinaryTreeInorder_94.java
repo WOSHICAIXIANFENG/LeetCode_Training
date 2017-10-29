@@ -30,11 +30,33 @@ public class BinaryTreeInorder_94 {
 		
 		System.out.println("Cai Test preorderTraversal result = " + inorderTraversal(node1));// 25134
 		
+		System.out.println("Cai Test preorderTraversal result = " + inorderTraversal2(node1));// 25134
+		
 //		int x = 4;
 //		int y = (int) Math.ceil(x %5 + x/5.0);
 //		System.out.println("Cai Test preorderTraversal y = " + y);// 
 	}
+	
+	// left --- middle --- right
+	public static List<Integer> inorderTraversal2(TreeNode root) {
+		List<Integer> results = new ArrayList<>();
+		traverse(root, results);
+		return results;
+	}
+	
+	// Recursive solution
+	// left --- middle --- right
+	public static void traverse(TreeNode root, List<Integer> results) {
+		if (root == null) {
+			return;
+		}
+		traverse(root.left, results);
+		results.add(root.val);
+		traverse(root.right, results);
+	}
+		
 
+	// Interative solution
 	// left -- middle -- right
 	public static List<Integer> inorderTraversal(TreeNode root) {
 		List<Integer> results = new ArrayList<>();

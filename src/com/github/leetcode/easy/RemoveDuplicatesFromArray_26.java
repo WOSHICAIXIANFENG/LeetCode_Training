@@ -18,12 +18,23 @@ Your function should return length = 2, with the first two elements of nums bein
 public class RemoveDuplicatesFromArray_26 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		// only for sorted array
+		int[] t1 = {1,2,2};
+		int[] t2 = {1,2,3,3};
+		int[] t3 = {1,1,2,2,3,3,3};
+		
+		System.out.println("Samuel Test removeDuplicates = " + removeDuplicates(t1));
+		System.out.println("Samuel Test removeDuplicates = " + removeDuplicates(t2));
+		System.out.println("Samuel Test removeDuplicates = " + removeDuplicates(t3));
 	}
 
-	public int removeDuplicates(int[] nums) {
-        return 0;
-    }
+	// time complexity: O(n), space complexity O(1) --- i
+	public static int removeDuplicates(int[] nums) {
+	    int i = 0;
+	    for (int n : nums)
+	        if (i == 0 || n > nums[i-1]) // !!! Don't forget i == 0
+	            nums[i++] = n;
+	    return i;
+	}
 	
 }

@@ -1,5 +1,10 @@
 package com.github.leetcode.easy;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+
 /**
  * https://leetcode.com/problems/intersection-of-two-arrays-ii/
  * 
@@ -21,12 +26,38 @@ What if elements of nums2 are stored on disk, and the memory is limited such tha
 public class IntersectionOfTwoArray_350 {
 
 	public static void main(String[] args) {
+		int[] nums1 = {1,2,2,1};
+		int[] nums2 = {2,2};
 		
-
+		System.out.println("Samuel Test  intersect = " + Arrays.toString(intersect(nums1, nums2)));
 	}
 	
-	public int[] intersect(int[] nums1, int[] nums2) {
-        return null;
+	public static int[] intersect(int[] nums1, int[] nums2) {
+		HashMap<Integer, Integer> map = new HashMap<>();
+		List<Integer> result = new ArrayList<>();
+		
+		for (int i : nums1) {
+			if (map.containsKey(i)) {
+				map.put(i, map.get(i) + 1);
+			} else {
+				map.put(i, 1);
+			}
+		}
+		
+		for (int i : nums2) {
+			if (map.containsKey(i) && map.get(i) > 0) {
+				result.add(i);
+				map.put(i, map.get(i) - 1);
+			}
+		}
+		
+		int[] temp = new int[result.size()];
+		for (int i = 0; i < result.size(); i ++) {
+			temp[i] = result.get(i);
+		}
+		return temp;
     }
+	
+
 
 }

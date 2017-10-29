@@ -1,5 +1,7 @@
 package com.github.leetcode.easy;
 
+import java.util.Arrays;
+
 /**
  * https://leetcode.com/problems/remove-element/
  * 
@@ -20,12 +22,23 @@ Your function should return length = 2, with the first two elements of nums bein
 public class RemoveElement_27 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		int[] t1 = {3,2,2,3};
+		int v1 = 3;
+		
+		System.out.println("Samuel Test removeElement = " + removeElement(t1, v1));
 	}
 	
-	public int removeElement(int[] nums, int val) {
-        return 0;
+	// time complexity: O(n), space complexity: O(1)
+	public static int removeElement(int[] nums, int val) {
+		int m = 0;
+		for (int i = 0; i < nums.length; i ++) {
+			if (nums[i] != val) {
+				nums[m] = nums[i];
+				m ++;
+			}
+		}
+		System.out.println("Samuel Test after array = " + Arrays.toString(nums));
+        return m;
     }
 
 }

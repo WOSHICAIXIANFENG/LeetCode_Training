@@ -1,5 +1,7 @@
 package com.github.leetcode.easy;
 
+import java.util.Stack;
+
 /**
  * https://leetcode.com/problems/valid-parentheses/
  * 
@@ -13,12 +15,34 @@ The brackets must close in the correct order, "()" and "()[]{}" are all valid bu
 public class ValidParentheses_20 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		String str1 = "()";
+		String str2 = "(";
+		String str3 = "({[()]})";
+		String str4 = "({{][}})";
+		
+		System.out.println("Samuel Test isValid = " + isValid(str1));
+		System.out.println("Samuel Test isValid = " + isValid(str2));
+		System.out.println("Samuel Test isValid = " + isValid(str3));
+		System.out.println("Samuel Test isValid = " + isValid(str4));
 	}
 	
-	public boolean isValid(String s) {
-        return false;
+	public static boolean isValid(String s) {
+		Stack<Character> stack = new Stack<>();
+		char[] chars = s.toCharArray();
+		for (Character ch : chars) {
+			if (ch == '(') {
+				stack.push(')');
+			} else if (ch == '[') {
+				stack.push(']');
+			} else if (ch == '{') {
+				stack.push('}');
+			} else {
+				if (stack.isEmpty() || stack.pop() != ch) {
+					return false;
+				}
+			}
+		}
+        return stack.isEmpty();
     }
 
 }

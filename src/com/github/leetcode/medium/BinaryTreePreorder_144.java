@@ -59,6 +59,7 @@ public class BinaryTreePreorder_144 {
 		return results;
 	}
 	
+	// Recursive solution
 	// middle --- left --- right
 	public static void traverse(TreeNode root, List<Integer> results) {
 		if (root == null) {
@@ -69,6 +70,7 @@ public class BinaryTreePreorder_144 {
 		traverse(root.right, results);
 	}
 
+	// Iterative Solution
 	// middle --- left --- right
 	public static List<Integer> preorderTraversal(TreeNode root) {
 	    List<Integer> results = new ArrayList<>();

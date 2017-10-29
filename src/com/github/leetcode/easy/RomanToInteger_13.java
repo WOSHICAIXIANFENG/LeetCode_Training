@@ -13,7 +13,6 @@ Input is guaranteed to be within the range from 1 to 3999.
 public class RomanToInteger_13 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
 	}
 	
