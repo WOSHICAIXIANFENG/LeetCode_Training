@@ -11,10 +11,30 @@ package com.github.leetcode.easy;
 public class UglyNumber_263 {
 
 	public static void main(String[] args) {
-		
+		System.out.println("Cai Test isUgly = " + isUgly(0));//!!!
+		System.out.println("Cai Test isUgly = " + isUgly(1));
+		System.out.println("Cai Test isUgly = " + isUgly(14));
+		System.out.println("Cai Test isUgly = " + isUgly(8));
 	}
 	
-	public boolean isUgly(int num) {
+	// 1 ms, faster than 100.00%
+	public static boolean isUgly(int num) {
+		if (num == 0) {//!!!
+			return false;
+		}
+		
+		if (num == 1) {
+			return true;
+		}
+		
+		if (num % 2 == 0) {
+			return isUgly(num / 2);
+		} else if (num % 3 == 0) {
+			return isUgly(num / 3);
+		} else if (num % 5 == 0) {
+			return isUgly(num / 5);
+		}
+		
         return false;
     }
 }

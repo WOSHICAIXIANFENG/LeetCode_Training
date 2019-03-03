@@ -15,10 +15,12 @@ For example, if there are 4 stones in the heap, then you will never win the game
 public class NimGame_292 {
 
 	public static void main(String[] args) {
-
+		System.out.println("Cai Test = " + canWinNim(4));
 	}
 
-	public boolean canWinNim(int n) {
-        return false;
+	// 0 ms, faster than 100.00% 
+	// Both of you are very clever and have optimal strategies for the game.
+	public static boolean canWinNim(int n) {
+        return n % 4 != 0;
     }
 }

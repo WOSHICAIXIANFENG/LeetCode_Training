@@ -22,31 +22,52 @@ public class SearchInsertPosition_35 {
 		int t1 = 5;
 		int t2 = 2;
 		int t3 = 7;
-		int t4 = 0;
+		int t4 = 6;
 		
-		System.out.println("Samuel Test searchInsert = " + searchInsert(array1, t1));
-		System.out.println("Samuel Test searchInsert = " + searchInsert(array1, t2));
-		System.out.println("Samuel Test searchInsert = " + searchInsert(array1, t3));
-		System.out.println("Samuel Test searchInsert = " + searchInsert(array1, t4));
+		System.out.println("Samuel Test searchInsert = " + searchInsert(array1, t1));//2
+		System.out.println("Samuel Test searchInsert = " + searchInsert(array1, t2));//1
+		System.out.println("Samuel Test searchInsert = " + searchInsert(array1, t3));//4
+		System.out.println("Samuel Test searchInsert = " + searchInsert(array1, t4));//3
 	}
 	
+	// 5 ms, faster than 51.20% 
 	// Note: for Binary Search Time complexity: O(log(n))
 	public static int searchInsert(int[] nums, int target) {
 		int low = 0;
 		int high = nums.length - 1;
-	
-		while (low <= high) { // !!! --- Don't forget = 
-			int mid = (low + high) / 2;
-			if (nums[mid] > target) {
-				high = mid - 1;
-			} else if (nums[mid] < target) {
-				low = mid + 1;
+		while (low <= high) { // !!! Don't forget =
+			int middleIndex = (low + high)/2;
+			int middle = nums[middleIndex];
+			if (middle < target) {
+				low = middleIndex + 1;
+			} else if (middle > target){
+				high = middleIndex - 1;
 			} else {
-				return mid;
+				return middleIndex;
 			}
 		}
 		
-        return low; // !!! --- return low is right. return high is wrong!!!
+		return low; // !!!
     }
+		
+	
+//	// Note: for Binary Search Time complexity: O(log(n))
+//	public static int searchInsert(int[] nums, int target) {
+//		int low = 0;
+//		int high = nums.length - 1;
+//	
+//		while (low <= high) { // !!! --- Don't forget = 
+//			int mid = (low + high) / 2;
+//			if (nums[mid] > target) {
+//				high = mid - 1;
+//			} else if (nums[mid] < target) {
+//				low = mid + 1;
+//			} else {
+//				return mid;
+//			}
+//		}
+//		
+//        return low; // !!! --- return low is right. return high is wrong!!!
+//    }
 
 }

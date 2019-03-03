@@ -30,11 +30,14 @@ public class PalindromeLinkedList_234 {
 		//node3.next = node2_2;
 		node2_2.next = node1_1;
 		System.out.println("Samuel Test isPalindrome = " + isPalindrome(node1));
+		System.out.println("Samuel Test isPalindrome = " + isPalindrome(null));
 	}
 
+	// 1 ms, faster than 96.97%
+	
 	public static boolean isPalindrome(ListNode head) {
 		if (head == null) {
-			return false;
+			return true;
 		}
 		
 		ListNode fast = head, slow = head;
@@ -51,6 +54,8 @@ public class PalindromeLinkedList_234 {
 		
 		slow = reverse(slow);
 		fast = head;
+		// 1 2 3 -- 1 2 3   fast --> 1, slow --> 1
+		// 1 2 3 4 -- 1 2 3  fast --> 1, slow --> 1
 		
 		while (slow != null) {
 			if (fast.val != slow.val) {
