@@ -6,28 +6,37 @@ import java.util.List;
 public class FindAllAnagramsInStr_438 {
 
 	public static void main(String[] args) {
-//		System.out.println("Cai Test = " + findAnagrams("cbaebabacd", "abc"));
-//		System.out.println("Cai Test = " + findAnagrams("abab", "ab"));
-		System.out.println("Cai Test = " + findAnagrams("abeeab", "aab"));
+		System.out.println("Cai Test = " + findAnagrams("cbaebabacd", "abc"));
+		System.out.println("Cai Test = " + findAnagrams("abab", "ab"));
+		System.out.println("Cai Test = " + findAnagrams("abeeeab", "ab"));
+//		System.out.println("Cai Test = " + findAnagrams("abeeab", "aab"));
+//		System.out.println("Cai Test = " + findAnagrams("eeaba", "ab"));
+//		System.out.println("Cai Test = " + findAnagrams("eaeba", "ab"));
 	}
 	
 	// 8 ms, faster than 96.05%
+	// window --- [start--i] --- window's length is p's length()
 	public static List<Integer> findAnagrams(String s, String p) {
         List<Integer> res = new ArrayList<Integer>();
+        
         if (s == null || s.length() == 0 || p == null || p.length() == 0) return res;
-        int start = 0, count = p.length();
+        
         int[] db = new int[256];
         for (char c : p.toCharArray()) {
             db[c]++;
         }
+        
+        int start = 0, count = p.length();
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
             if (--db[c] >= 0) {
                 count--;
             }
+            
             if (count == 0) {
                 res.add(start);
             }
+            
             if (i - start == p.length() - 1) {
                 if (++db[s.charAt(start)] >= 1) {
                     count++;

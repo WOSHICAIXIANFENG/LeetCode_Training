@@ -57,15 +57,18 @@ public class PathSumIII_437_better {
 //		System.out.println("Cai Test pathSum = " + pathSum(node1, 8));
 	}
 	
+	// 3 ms, faster than 100.00%
 	// 9 ms, faster than 94.16%
 	public static int pathSum(TreeNode root, int sum) {
 		// key: the prefix Sum, value: how many ways get to this prefix sum
-		HashMap<Integer, Integer> preSum = new HashMap();
+		HashMap<Integer, Integer> preSum = new HashMap<>();
 		preSum.put(0, 1);
 		return helper(root, 0, sum, preSum);
 	}
 	
+	// 注意node.val 可能是负数！！！
 	// O(n) Prefix sum method
+	// SC: O(h). TC: O(N)
 	public static int helper(TreeNode root, int currSum, int target, HashMap<Integer, Integer> preSum) {
 		if (root == null) return 0;
 		
@@ -75,7 +78,10 @@ public class PathSumIII_437_better {
 		
 		result += helper(root.left, currSum, target, preSum) + helper(root.right, currSum, target, preSum);
 		
-		preSum.put(currSum, preSum.get(currSum) - 1); // !!! because we either find the path in left side or right side.
+		// 下一句很关键！！！!!!!!!!!
+		// 每一条 从上到下的 path，可以看成是一个 int array, []，你在计算时不可以受另一个path同级分支上数据的影响
+		// 所以，你需要remove 掉 这个currSum出现的值。
+		preSum.put(currSum, preSum.get(currSum) - 1); //!!! because we either find the path in left side or right side.
 		// reduce the curr pre sum to avoid one side affect another side when the another side is in traverse
 		return result;
 	}

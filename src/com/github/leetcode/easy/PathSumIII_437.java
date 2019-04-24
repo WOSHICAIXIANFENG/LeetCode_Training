@@ -54,9 +54,10 @@ public class PathSumIII_437 {
 //		System.out.println("Cai Test pathSum = " + pathSum(node1, 8));
 	}
 	
+	// 10 ms, faster than 78.04%
 	// Typical recursive DFS
 	// Space: O(n) due to recursion.
-	// Time: O(n^2) in worst case (no branching); O(nlogn) in best case (balanced tree).
+	// Time: O(n^2).
 	// pathSumFrom takes O(n)
 	// pathSum has recurrence relation T(n) = n + 2T(n/2) = nlogn for balance tree. ---> ???
 	// pathSum has recurrence relation T(n) = n + T(n-1) = n^2 for linear tree.
@@ -64,9 +65,12 @@ public class PathSumIII_437 {
 		if (root == null) {
 			return 0;
 		}
+		// 注意这里是 pathSum
 		return pathSumFrom(root, sum) + pathSum(root.left, sum) + pathSum(root.right, sum);
 	}
 	
+	// The path does not need to start or end at the root or a leaf, but it must go downwards 
+	// so, we don't need to check if the node is leaf node
 	private static int pathSumFrom(TreeNode node, int sum) {
 		if (node == null) return 0;
 		// DFS ----> Pre Order search 

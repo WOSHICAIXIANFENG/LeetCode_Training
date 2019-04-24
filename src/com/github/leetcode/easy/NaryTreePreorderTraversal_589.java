@@ -1,8 +1,6 @@
 package com.github.leetcode.easy;
 
-import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Deque;
 import java.util.List;
 
 public class NaryTreePreorderTraversal_589 {

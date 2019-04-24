@@ -1,5 +1,8 @@
 package com.github.leetcode.easy;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * 
 Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).
@@ -42,24 +45,47 @@ public class SymmetricTree_101 {
 		System.out.println("Samuel Test isSymmetric = " + isSymmetric(node1));
 	}
 	
+	// Approach 2: Iterative
 	public static boolean isSymmetric(TreeNode root) {
-		
-        return root == null || isSymmetricHalf(root.left, root.right);
-    }
-	
-	public static boolean isSymmetricHalf(TreeNode left, TreeNode right) {
-		if (left == null && right == null) {
-			return true;
+		Queue<TreeNode> queue = new LinkedList<>();
+		queue.offer(root);
+		queue.offer(root);
+		while (!queue.isEmpty()) {
+			TreeNode node1 = queue.poll();
+			TreeNode node2 = queue.poll();
+			if (node1 == null && node2 == null) continue;
+			if (node1 == null || node2 == null) return false;
+			if (node1.val != node2.val) return false;
+			queue.add(node1.left);
+			queue.add(node2.right);
+			queue.add(node1.right);
+			queue.add(node2.left);
 		}
-		if (left == null || right == null) {
-			return false;
-		}
-		
-		if (left.val != right.val) {
-			return false;
-		}
-		
-		return isSymmetricHalf(left.right, right.left) && isSymmetricHalf(left.left, right.right);
+		return true;
 	}
+	
+	// 0 ms, faster than 100.00%
+	// Approach 1: Recursive way
+	// Time Complexity: O(n)
+	// Space Complexity: O(n) --- the number of recursive calls is bound by the height of the tree
+	// In the worst case, the tree is linear and the height is in O(n)
+//	public static boolean isSymmetric(TreeNode root) {
+//        return root == null || isSymmetricHalf(root.left, root.right);
+//    }
+//	
+//	public static boolean isSymmetricHalf(TreeNode left, TreeNode right) {
+//		if (left == null && right == null) {
+//			return true;
+//		}
+//		if (left == null || right == null) {
+//			return false;
+//		}
+//		
+//		if (left.val != right.val) {
+//			return false;
+//		}
+//		
+//		return isSymmetricHalf(left.right, right.left) && isSymmetricHalf(left.left, right.right);
+//	}
 
 }

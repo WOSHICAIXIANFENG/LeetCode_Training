@@ -51,15 +51,16 @@ public class ReverseLinkedList_206 {
 		return reverseNode(head, null);
 	}
 	
-	public static ListNode reverseNode(ListNode head, ListNode newHead) {
-		if (head == null)  return newHead;
+	// 1->2->3->4->5->NULL
+    // loop1 --> 1->Null
+    // loop2 --> 2->1->Null
+    // loop3 --> 3->2->1->Null
+    // loop4 --> 4->3->2->1->Null
+	public static ListNode reverseNode(ListNode head, ListNode afterNewHead) {
+		if (head == null)  return afterNewHead;
 		
-		// 1 -> 2 -> 3 -> 4 -> 5, null
-		// loop1: (2--, 1 -> null)
-		// loop2: (3--, 2 -> 1 -> null)
-		// loop3: (4, 3 -> 2 -> 1 -> null)
 		ListNode next = head.next;
-		head.next = newHead;
+		head.next = afterNewHead;
 		return reverseNode(next, head);
 	}
 }

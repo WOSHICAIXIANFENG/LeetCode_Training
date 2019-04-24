@@ -9,48 +9,48 @@ public class ValidAnagram_242 {
 		System.out.println("Cai Test  = " + isAnagram("anagram", "nagaram"));
 		System.out.println("Cai Test  = " + isAnagram("rat", "cat"));
 		// test unicode characters
-		System.out.println("Cai Test  = " + isAnagram("+-rat^&*c", "cat*&^r-+"));
+		// System.out.println("Cai Test  = " + isAnagram("+-rat^&*c", "cat*&^r-+"));
 	}
 	
 	// 1 ms, faster than 100.00% 
-//	public static boolean isAnagram(String s, String t) {
-//		if (s == null || t == null || s.length() != t.length()) {
-//            return false;
-//        }
-//        
-//        // standard ascii table has 128 elements.
-//        int[] map = new int[128];
-//        for (char c: s.toCharArray()) {
-//            map[c]++;
-//        }
-//        
-//        for( char c: t.toCharArray()) {
-//            if (map[c] == 0) return false;
-//            else map[c]--;
-//        }
-//        
-//        return true;
-//	}
+	public static boolean isAnagram(String s, String t) {
+		if (s == null || t == null || s.length() != t.length()) {
+            return false;
+        }
+        
+        // standard ascii table has 128 elements.
+        int[] map = new int[128];
+        for (char c: s.toCharArray()) {
+            map[c]++;
+        }
+        
+        for( char c: t.toCharArray()) {
+            if (map[c] == 0) return false;
+            else map[c]--;
+        }
+        
+        return true;
+	}
 	
 	// 18 ms, faster than 26.30% 
 	// What if the inputs contain unicode characters? How would you adapt your solution to such case?
-	public static boolean isAnagram(String s, String t) {
-		Map<Character, Integer> table = new HashMap<>();
-		for (int i = 0; i < s.length(); i++) {
-			int count = table.getOrDefault(s.charAt(i), 0);
-			table.put(s.charAt(i), count + 1); // !!! not count++
-		}
-		
-		for (int i = 0; i < t.length(); i++) {
-			int count = table.getOrDefault(t.charAt(i), 0);
-			if (count == 0) {
-				return false;
-			} else {
-				table.put(t.charAt(i), count - 1);
-			}
-		}
-		return true;
-	}
+//	public static boolean isAnagram(String s, String t) {
+//		Map<Character, Integer> table = new HashMap<>();
+//		for (int i = 0; i < s.length(); i++) {
+//			int count = table.getOrDefault(s.charAt(i), 0);
+//			table.put(s.charAt(i), count + 1); // !!! not count++
+//		}
+//		
+//		for (int i = 0; i < t.length(); i++) {
+//			int count = table.getOrDefault(t.charAt(i), 0);
+//			if (count == 0) {
+//				return false;
+//			} else {
+//				table.put(t.charAt(i), count - 1);
+//			}
+//		}
+//		return true;
+//	}
 	
 	// 5 ms, faster than 57.88%
 	// Approach 2.2: Hash Table

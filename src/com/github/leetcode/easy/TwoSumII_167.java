@@ -38,10 +38,12 @@ public class TwoSumII_167 {
 	public static int[] twoSum(int[] numbers, int target) {
 		int[] result = new int[2];
 		// for HashMap --- get() and containsKey() method --- time complexity O(1)
+		// value --> index
 		Map<Integer, Integer> map = new HashMap<>();
 		for (int i = 0; i < numbers.length; i ++) {
 			if (map.containsKey(target - numbers[i])) {
-				result[1] = i + 1;
+				// !!! 注意
+				result[1] = i + 1; //!!! 这里放的是[1]
 				result[0] = map.get(target - numbers[i]);
 			}
 			map.put(numbers[i], i + 1);
@@ -49,13 +51,18 @@ public class TwoSumII_167 {
         return result;
     }
 	
-	// O(n) solution2 by two pointers
+	// 1 ms, faster than 47.74%
+	// Approach 2: Two pointers
+	// TC: O(n) solution2 by two pointers
 	public static int[] twoSum2(int[] numbers, int target) {
 		int[] result = new int[2];
 		// because numbers is sorted, so we can use two pointers solution
 		int head = 0;
 		int last = numbers.length - 1;
 		while (head < last) {
+			// in order to avoid out of Int range
+			// we use /2 solution --- avoiding use numbers[head] + numbers[last]
+			// 使用除2法，就需要使用double 来避免整除带来的丢失问题!!!
 			double avg = numbers[head] + (numbers[last] - numbers[head])/2d;
 			if (avg == target/2d) {
 				result[1] = last + 1;

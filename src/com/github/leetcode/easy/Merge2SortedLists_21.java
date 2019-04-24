@@ -57,9 +57,10 @@ public class Merge2SortedLists_21 {
 		}
     }
 	
+	// 0 ms, faster than 100.00%
 	// iterative --- time Complexity O(n) --- n is Min(length1, length2);
 	public static ListNode mergeTwoLists2(ListNode l1, ListNode l2) {
-		ListNode head = new ListNode(0);
+		ListNode head = new ListNode(0);//!!! Use a dummy head at first
 		ListNode handler = head;
 		
 		while (l1 != null && l2 != null) {

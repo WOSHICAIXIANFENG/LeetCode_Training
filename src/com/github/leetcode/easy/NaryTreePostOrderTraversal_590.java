@@ -3,8 +3,6 @@ package com.github.leetcode.easy;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
-import java.util.Stack;
 
 public class NaryTreePostOrderTraversal_590 {
 
@@ -60,7 +58,7 @@ public class NaryTreePostOrderTraversal_590 {
 //        if (root == null) return results;
 //        
 //        // Use a stack as the result or always add element on index 0 for list
-//        //Stack<Integer> values = new Stack<>();
+//        //Stack<Integer> results = new Stack<>();
 //        
 //        Stack<Node> stack = new Stack<>();
 //        stack.push(root);

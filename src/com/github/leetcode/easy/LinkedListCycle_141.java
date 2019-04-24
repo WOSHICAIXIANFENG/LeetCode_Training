@@ -30,6 +30,8 @@ public class LinkedListCycle_141 {
 		System.out.println("Samuel Test detectCycle = " + hasCycle(node1));
 	}
 	
+	// 0 ms, faster than 100.00%
+	// Approach 1: Floyd Cycle Detection Algorithm
 	public static boolean hasCycle(ListNode2 head) {
 		if (head == null || head.next == null) {
 			return false;
