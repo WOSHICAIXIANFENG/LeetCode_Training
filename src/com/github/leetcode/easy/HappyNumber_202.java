@@ -31,6 +31,7 @@ public class HappyNumber_202 {
 //		return false;
 //	}
 
+	// 1 ms, faster than 93.44% 
 	// 0 ms, faster than 100.00% 
 	// 1, 7, 10, 13, 19, 23, 28, 31, 32, 44, 49, 68, 70, 79, 82, 86, 91, 94, 97, 100,.....
 	public static boolean isHappy(int n) {

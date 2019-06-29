@@ -17,34 +17,38 @@ public class FindAllAnagramsInStr_438 {
 	// 8 ms, faster than 96.05%
 	// window --- [start--i] --- window's length is p's length()
 	public static List<Integer> findAnagrams(String s, String p) {
-        List<Integer> res = new ArrayList<Integer>();
+		List<Integer> ans = new ArrayList<>();
+        if (s == null || p == null || s.length() == 0 || p.length() == 0) return ans;
         
-        if (s == null || s.length() == 0 || p == null || p.length() == 0) return res;
-        
-        int[] db = new int[256];
+        int[] counter = new int[256]; // standard ascii table + extral space
         for (char c : p.toCharArray()) {
-            db[c]++;
+            counter[c]++;
         }
         
-        int start = 0, count = p.length();
+        int start = 0; //the start indices of p's anagrams in s
+        int count = p.length();// user to check the timing.
         for (int i = 0; i < s.length(); i++) {
-            char c = s.charAt(i);
-            if (--db[c] >= 0) {
+            // it means current char is in counter
+            if (--counter[s.charAt(i)] >= 0) {
                 count--;
             }
             
+            // when all occurrences be eliminated
             if (count == 0) {
-                res.add(start);
+                ans.add(start);
             }
             
+            // the window size is p.length() - 1
             if (i - start == p.length() - 1) {
-                if (++db[s.charAt(start)] >= 1) {
+                // move forward the start index (left pointer of window)
+                if (++counter[s.charAt(start)] >= 1) {
                     count++;
                 }
                 start++;
             }
         }
-        return res;
+        
+        return ans;
     }
 	
 //	public static List<Integer> findAnagrams(String s, String p) {

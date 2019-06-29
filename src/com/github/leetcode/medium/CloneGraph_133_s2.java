@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class CloneGraph_2_134 {
+public class CloneGraph_133_s2 {
 	
 	public static void main(String[] args) {
-		CloneGraph_2_134 cg = new CloneGraph_2_134();
+		CloneGraph_133_s2 cg = new CloneGraph_133_s2();
 		// Test
 		UndirectedGraphNode node0 = new UndirectedGraphNode(0);
 		UndirectedGraphNode node1 = new UndirectedGraphNode(1);

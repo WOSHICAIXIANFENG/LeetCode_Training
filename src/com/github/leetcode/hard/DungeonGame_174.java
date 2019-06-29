@@ -13,6 +13,9 @@ public class DungeonGame_174 {
 		System.out.println("Cai Test = " + calculateMinimumHP(a1));
 	}
 	
+	// If at any point his health point drops to 0 or below, he dies immediately.
+	// !!!! he dies immediately !!!
+	
 	// 38 ms, faster than 5.02%  ---- !!!!
 	
 	// Approach 1: DP --- Use two-dimensional dp array to solve it

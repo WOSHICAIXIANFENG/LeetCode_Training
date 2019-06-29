@@ -29,7 +29,7 @@ public class CountSmallerNumbersAfterSelf_315 {
 	// !!! 注意，此题你必须将number 转成rank来解，不然你的 frequency table会非非常大，会Stack Overflow的!!!
 	// Prefix sums of frequencies, convert the number to its rank as in sorted array
 	// TC: O(nlogN)
-	// SC: O(k) --- k is the # of unique elements
+	// SC: O(k) --- k is the # of unique elements. The # of nodes of Fenwick Tree
 	//Approach 2: Fenwick Tree 
 	public List<Integer> countSmaller(int[] nums) {
 		// step1: sort the unique numbers
@@ -44,6 +44,8 @@ public class CountSmallerNumbersAfterSelf_315 {
 		//System.out.println("Cai Test sorted unique array = " + Arrays.toString(sortedArray));
 		
 		// step2: map the number to its rank
+		// TC: O(k) --- K is the # of unique elements
+		// SC: O(k)
 		Map<Integer, Integer> ranks = new HashMap<>();
 		int rank = 0;
 		Iterator<Integer> iterator = uniqueSet.iterator();
@@ -52,9 +54,11 @@ public class CountSmallerNumbersAfterSelf_315 {
 		}
 		//System.out.println("Cai Test sorted ranks = " + ranks);
 		List<Integer> ans = new ArrayList<>();
+		
 		// use a fenwick tree to as the frequency tree
 		FenwickTree ft = new FenwickTree(ranks.size());
 		// step3: Scan the numbers in reversed order
+		// TC: O(n (LgN + LgN))
 		for (int i = nums.length - 1; i >= 0; i--) {
 			// Increase the count of the rank of current number.
 			ft.update(ranks.get(nums[i]), 1);
@@ -63,6 +67,7 @@ public class CountSmallerNumbersAfterSelf_315 {
 			ans.add(ft.query(ranks.get(nums[i]) - 1));
 		}
 		
+		// TC: O(n)
 		Collections.reverse(ans);
 		return ans;
 	}

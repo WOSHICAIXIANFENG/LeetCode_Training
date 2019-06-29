@@ -56,6 +56,7 @@ public class SymmetricTree_101 {
 			if (node1 == null && node2 == null) continue;
 			if (node1 == null || node2 == null) return false;
 			if (node1.val != node2.val) return false;
+			System.out.println("Cai Test val1 = " + node1.val + " val2 = " + node2.val);
 			queue.add(node1.left);
 			queue.add(node2.right);
 			queue.add(node1.right);

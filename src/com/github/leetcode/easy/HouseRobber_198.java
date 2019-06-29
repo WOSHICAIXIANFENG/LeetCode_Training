@@ -37,7 +37,7 @@ public class HouseRobber_198 {
 //	}
 	
 	// Approach 1: Recursion
-	// TC: O(2^n)
+	// TC: O(2^n) --- exponential
 	// SC: O(1)
 	// This algorithm will process the same i multiple times and it needs improvement. Time complexity: [n^2]
 
